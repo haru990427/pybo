@@ -34,6 +34,7 @@ def question_modify(request, question_id):
         if form.is_valid():
             question = form.save(commit=False)
             question.modify_date = timezone.now()  # 수정일시 저장
+            question.modify += 1
             question.save()
             return redirect('pybo:detail', question_id=question.id)
     else:
