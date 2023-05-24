@@ -62,6 +62,7 @@
                     <a href="#" class="small delete"
                        data-uri="{% url 'pybo:comment_delete_question' comment.id  %}">삭제</a>
                     {% endif %}
+                    <td>{{ comment.modify }}번 수정됨 </td>
                 </div>
             {% endfor %}
             </div>
@@ -124,6 +125,7 @@
                     <a href="#" class="small delete"
                        data-uri="{% url 'pybo:comment_delete_answer' comment.id  %}">삭제</a>
                     {% endif %}
+                    <td>{{ comment.modify }}번 수정됨 </td>
                 </div>
             {% endfor %}
             </div>
