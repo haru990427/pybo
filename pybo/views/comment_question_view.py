@@ -43,6 +43,7 @@ def comment_modify_question(request, comment_id):
             comment = form.save(commit=False)
             comment.author = request.user
             comment.modify_date = timezone.now()
+            comment.modify += 1
             comment.save()
             return redirect('pybo:detail', question_id=comment.question.id)
     else:
