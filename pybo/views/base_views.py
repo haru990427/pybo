@@ -24,6 +24,10 @@ def index(request):
 
 
 def detail(request, question_id):
+    page = request.GET.get('comment_page', '1')
     question = get_object_or_404(Question, pk=question_id)
-    context = {'question': question}
+    comment_question_list = question.comment_set.all().order_by('-create_date')
+    paginator = Paginator(comment_question_list, 5)
+    page_obj = paginator.get_page(page)
+    context = {'question': question , 'comment_list': page_obj}
     return render(request, 'pybo/question_detail.html', context)
